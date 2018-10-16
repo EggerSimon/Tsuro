@@ -21,11 +21,6 @@ public class Card {
 	public void connectNodes(Node origin, Node dest) {
 		if(origin.connectNode(dest) && !origin.equals(dest))
 			edges.add(origin.edge);
-		
-//		origin.connectNode(dest);
-//		
-//		if(!edges.contains(origin.edge))
-//			edges.add(origin.edge);
 	}
 	
 	public void connectNodesByIndex(int origin, int dest) {
@@ -62,22 +57,23 @@ public class Card {
 	}
 	
 	public boolean containsEdge(Edge e) {
-		boolean contains = false;
-		
-		for(Edge edge: edges)
-			if(edge.equals(e))
-				contains = true;
-		
-		return contains;
+		for(Edge edge: edges) {
+			if(edge.equals(e)) {
+				return true;
+			}
+		}
+		return false;
 	}
 	
 	public boolean equals(Card c) {
 		if(this.edges.size() != c.edges.size())
 			return false;
 					
-		for(Edge edge: edges)
-			if(!c.containsEdge(edge))
+		for(Edge edge: edges) {
+			if(!c.containsEdge(edge)) {
 				return false;
+			}
+		}
 
 		return true;
 	}
